@@ -74,8 +74,8 @@ public class assemblr {
 		case "ANDI": return "0011";
 		case "CMP" : return "0100";
 		case "CMPI": return "0101";
-		case "LD"  : return "0110";
-		case "JUMP": return "1110";
+		case "JUMP": return "0110";
+		case "LD"  : return "0111";
 		case "ST"  : return "1000";
 		case "JE"  : return "1001";
 		case "JA"  : return "1010";
@@ -108,6 +108,18 @@ public class assemblr {
 		else if(op.equals("CMPI")||op.equals("JUMP")||op.equals("ST")||op.equals("LD")
 				||op.equals("JE")||op.equals("JA")||op.equals("JB")||op.equals("JAE")
 				||op.equals("JBE")){
+			if(op.equals("ST")||op.equals("LD")
+					||op.equals("JE")||op.equals("JA")||op.equals("JB")||op.equals("JAE")
+					||op.equals("JBE")){
+				if(dec<0||(lineCounter-dec)<=0){
+					return "fail";
+				}
+			}
+			if(op.equals("JUMP")){
+				if(dec+where<0){
+					return "fail";
+				}
+			}
 				decimal=Integer.toBinaryString(dec);
 				int lt=decimal.length();
 				for(int i=0;i<9-lt;i++){
