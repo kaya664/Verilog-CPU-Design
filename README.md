@@ -2,8 +2,8 @@
 Verilog Cpu Assembler
 
 ###Technologies
-*Verilog
-*Java
+* Verilog
+* Java
 
 
 
